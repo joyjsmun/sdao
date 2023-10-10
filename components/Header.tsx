@@ -1,4 +1,5 @@
 import { ConnectButton } from "@rainbow-me/rainbowkit";
+import Link from "next/link";
 
 export const Header = () => {
   return (
@@ -6,14 +7,17 @@ export const Header = () => {
       <nav>
         <ul className="flex items-center justify-between ml-5 mb-3">
           <li>
-            <a
-              className="pointer-events-none flex place-items-center gap-2 px-3 py-1 border text-2xl  border-white rounded-3xl font-light bg-transparent"
-              target="_blank"
-              href="/"
-              rel="noopener noreferrer"
+            <Link
+              legacyBehavior
+              className="pointer-events-none flex place-items-center"
+              href={{
+                pathname: "/",
+              }}
             >
-              SupremeDAO
-            </a>
+              <a className="gap-2 border text-2xl px-3 py-1  border-white rounded-3xl font-light bg-transparent ">
+                SupremeDAO
+              </a>
+            </Link>
           </li>
           <li className="flex flex-row p-4">
             {/* <a
