@@ -19,18 +19,18 @@ const Stake = () => {
   return (
     <div className="px-5 flex flex-col gap-4">
       <div className="bg-[#101217] grid rounded-2xl px-8 py-4 ">
-        <div className="flex flex-col text-2xl leading-7 gap-2 mb-3 ">
+        <div className="flex flex-col text-2xl leading-7 md:gap-2 mb-3 ">
           Strategy Description
         </div>
-        <div className=" font-medium leading-[1.375rem] text-s-gray">
+        <div className=" text-sm md:text-lg font-light md:font-medium leading-[1.375rem] text-s-gray">
           Lorem ipsum dolor sit amet consectetur. Nibh phasellus gravida lectus
           et sit suscipit. Quam nisl dis in orci ac adipiscing viverra amet.{" "}
         </div>
       </div>
-      <div className="bg-[#101217]   grid-cols-2 grid md:grid-cols-4  rounded-2xl px-4 py-5 gap-3 ">
+      <div className="bg-[#101217]   grid-cols-2 grid md:grid-cols-4  md:rounded-2xl px-4 py-5 gap-3 ">
         <div className="bg-gradient-to-r from-[#337ec2] via-[#1d4a55] to-[#477655] p-[0.025rem] rounded-2xl ">
-          <div className="bg-[#252525] rounded-2xl  py-4 px-14 text-xl ">
-            <div className="capitalize  text-s-gray font-thin mb-2">
+          <div className="bg-black rounded-2xl  md:py-4 md:px-14 text-xl ">
+            <div className="capitalize  text-s-gray md:text-s-gray  md:font-thin text-[0.6rem] md:text-lg mb-2 px-1">
               Annual Percentage Rate
               <span
                 className=""
@@ -40,12 +40,14 @@ const Stake = () => {
                 }}
               ></span>
             </div>
-            <div className="text-s-aqua">85%</div>
+            <div className="text-s-aqua text-[0.6rem] px-2  md:text-lg text-[#3DFCB7]">
+              85%
+            </div>
           </div>
         </div>
         <div className="bg-gradient-to-r from-[#337ec2] via-[#1d4a55] to-[#477655] p-[0.025rem] rounded-2xl ">
-          <div className="bg-[#252525] rounded-2xl  py-4 px-14 text-xl ">
-            <div className="capitalize  text-s-gray font-light mb-2">
+          <div className="bg-black rounded-2xl  md:py-4 md:px-14 text-xl ">
+            <div className="capitalize  text-s-gray   md:font-thin text-[0.6rem] md:text-lg mb-2 px-1">
               Total Value locked
               <span
                 className=""
@@ -55,11 +57,13 @@ const Stake = () => {
                 }}
               ></span>
             </div>
-            <div className="">0.0000</div>
+            <div className="text-s-aqua text-[0.6rem] px-2  md:text-lg ">
+              0.0000
+            </div>
           </div>
         </div>
-        <div className="bg-black rounded-2xl  py-4 px-14 text-xl ">
-          <div className=" text-s-gray font-light mb-2">
+        <div className="bg-black rounded-2xl  md:py-4 md:px-14 text-xl ">
+          <div className="capitalize  text-s-gray md:text-s-gray  md:font-thin text-[0.6rem] md:text-lg mb-2 px-1">
             wstETH
             <span
               className=""
@@ -69,10 +73,12 @@ const Stake = () => {
               }}
             ></span>
           </div>
-          <div className="">0.0000</div>
+          <div className="text-s-aqua text-[0.6rem] px-2  md:text-lg ">
+            0.0000
+          </div>
         </div>
-        <div className="bg-black  rounded-2xl  py-4 px-14 text-xl ">
-          <div className="capitalize  text-s-gray font-light mb-2">
+        <div className="bg-black rounded-2xl  md:py-4 md:px-14 text-xl ">
+          <div className="capitalize  text-s-gray md:text-s-gray  md:font-thin text-[0.6rem] md:text-lg mb-2 px-1">
             Total Debt
             <span
               className=""
@@ -82,12 +88,14 @@ const Stake = () => {
               }}
             ></span>
           </div>
-          <div className="">0.0000</div>
+          <div className="text-s-aqua text-[0.6rem] px-2  md:text-lg ">
+            0.0000
+          </div>
         </div>
       </div>
-      <div className="bg-[#101217]  grid-cols-2 grid md:grid-cols-4  lg:grid-cols-4  rounded-2xl px-4 py-5 gap-3 ">
-        <div className="bg-black  rounded-2xl  py-4 px-14 text-xl ">
-          <div className="capitalize  text-s-gray font-light mb-2">
+      <div className="bg-[#101217]  grid-cols-3 grid md:grid-cols-4  lg:grid-cols-4  justify-between md:rounded-2xl px-2 md:px-4 py-5 gap-2 md:gap-3 ">
+        <div className="bg-black rounded-2xl  md:py-4 md:px-14 text-xl ">
+          <div className="capitalize  text-s-gray md:text-s-gray  md:font-thin text-[0.6rem] md:text-lg mb-2 px-1">
             Status
             <span
               className=""
@@ -97,10 +105,12 @@ const Stake = () => {
               }}
             ></span>
           </div>
-          <div className="text-s-aqua text-sm">Healthy</div>
+          <div className="text-s-aqua text-[0.6rem] px-2  md:text-lg text-[#3DFCB7]">
+            Healthy
+          </div>
         </div>
-        <div className="bg-black  rounded-2xl  py-4 px-14 text-xl ">
-          <div className="capitalize  text-s-gray font-light mb-2">
+        <div className="bg-black rounded-2xl  md:py-4 md:px-14 text-xl ">
+          <div className="capitalize  text-s-gray md:text-s-gray  md:font-thin text-[0.6rem] md:text-lg mb-2 px-1">
             Health
             <span
               className=""
@@ -110,10 +120,12 @@ const Stake = () => {
               }}
             ></span>
           </div>
-          <div className="text-s-aqua text-sm">0.00%</div>
+          <div className="text-s-aqua text-[0.6rem] px-2  md:text-lg text-[#3DFCB7]">
+            0.00%
+          </div>
         </div>
-        <div className="bg-black  rounded-2xl  py-4 px-14 text-xl ">
-          <div className="capitalize  text-s-gray font-light mb-2">
+        <div className="hidden md:block bg-black  rounded-2xl  py-4 px-14 text-xl ">
+          <div className="capitalize  text-s-gray font-light mb-2 hidden md:block">
             Liqudation Range
             <span
               className=""
@@ -123,10 +135,10 @@ const Stake = () => {
               }}
             ></span>
           </div>
-          <div className="text-sm">0.00 - 0.00</div>
+          <div className="text-sm hidden md:block">0.00 - 0.00</div>
         </div>
-        <div className="bg-black  rounded-2xl  py-4 px-14 text-xl ">
-          <div className="capitalize  text-s-gray font-light mb-2">
+        <div className="bg-black rounded-2xl  md:py-4 md:px-14 text-xl ">
+          <div className="capitalize  text-s-gray md:text-s-gray  md:font-thin text-[0.6rem] md:text-lg mb-2 px-1">
             Borrow Rate
             <span
               className=""
@@ -136,7 +148,9 @@ const Stake = () => {
               }}
             ></span>
           </div>
-          <div className="text-sm">0.00%</div>
+          <div className="text-s-aqua text-[0.6rem] px-2  md:text-lg">
+            0.00%
+          </div>
         </div>
       </div>
       <div className=" grid grid-cols-5 rounded-2xl gap-4 ">
@@ -163,22 +177,24 @@ const Stake = () => {
         {/* tab menu */}
         <Tabs
           defaultValue="staking"
-          className="w-full bg-[#101218]  lg:col-span-2 sm:col-span-5 lg:h-[35vh] rounded-2xl  flex-col gap-10 "
+          className="w-full bg-[#101218]  col-span-5 md:col-span-2  md:h-[35vh] rounded-2xl  flex-col gap-10 "
         >
           <TabsList className="grid w-full grid-cols-2 bg-[#101218] ">
-            <TabsTrigger value="staking" className="text-2xl py-2">
+            <TabsTrigger value="staking" className="text-sm md:text-2xl py-2">
               Staking
             </TabsTrigger>
-            <TabsTrigger value="withdraw" className="text-2xl py-2">
+            <TabsTrigger value="withdraw" className="text-sm md:text-2xl py-2">
               Withdraw
             </TabsTrigger>
           </TabsList>
           <TabsContent value="staking">
-            <div className="px-10 py-8 flex-col  ">
-              <div className="flex gap-7 justify-center my-8 ">
-                <div className="flex border border-[#1A1D23] w-full justify-between p-2 rounded-md">
-                  <div className="pl-3 pr-8 text-[#8C9096]">WSTETH</div>
-                  <span className="text-[#8C9096]">|</span>
+            <div className="p-4 md:px-10 md:py-8 flex-col  ">
+              <div className="flex gap-4 md:gap-7 md:justify-center my-4 md:my-8 ">
+                <div className="flex border border-[#1A1D23] md:w-full md:justify-between p-2 rounded-md text-[0.6rem] md:text-lg">
+                  <div className="md:pl-3 md:pr-8 text-[#8C9096] text-[0.6rem] md:text-lg">
+                    WSTETH
+                  </div>
+                  <span className="text-[#8C9096] hidden md:block">|</span>
                   <div>
                     <input
                       className="bg-[#101218] focus:bg-none focus:outline-0 text-right"
@@ -186,67 +202,67 @@ const Stake = () => {
                     />
                   </div>
                 </div>
-                <div className="flex gap-3 text-sm items-center pr-5 ">
+                <div className="flex gap-3 text-sm items-center md:pr-5 text-[0.6rem]">
                   <span>Available</span>
                   <span>1.5</span>
                 </div>
               </div>
-              <Button className="w-full text-[1.15rem]  rounded-full px-2 py-6 bg-gradient-to-br from-[#BAC6EF] via-[#65ABE9] to-[#8BF2E8] text-black">
+              <Button className="w-full md:text-[1.15rem]  rounded-full py-3 md:px-2 md:py-6 bg-gradient-to-br from-[#BAC6EF] via-[#65ABE9] to-[#8BF2E8] text-black">
                 Stake
               </Button>
             </div>
           </TabsContent>
           <TabsContent value="withdraw">
             <div className="bg-[#101218] px-10 py-8 flex-col">
-              <div className="flex border border-[#1A1D23] w-full justify-between p-2 rounded-md mb-4">
-                <div className="pl-3 pr-8 capitalize text-[#8C9096]">
+              <div className="grid grid-cols-5 md:flex border border-[#1A1D23] md:w-full md:justify-between p-2 rounded-md mb-4">
+                <div className="col-span-4 p-1 md:pl-3 md:pr-8 capitalize text-[#8C9096] text-[0.6rem] md:text-lg">
                   CLAIMABLE REWARDS
                 </div>
                 <div>
                   <input
-                    className="bg-[#101218] focus:bg-none focus:outline-0 text-right pr-2"
+                    className="bg-[#101218] focus:bg-none focus:outline-0 md:text-right pr-2 text-[0.8rem]"
                     placeholder="0.00"
                   />
                 </div>
               </div>
 
-              <div className="flex border border-[#1A1D23] w-full justify-between p-2 rounded-md mb-8">
-                <div className="pl-3 pr-8 capitalize text-[#8C9096]">
+              <div className="grid grid-cols-5 md:flex border border-[#1A1D23] w-full justify-between p-2 rounded-md mb-8">
+                <div className=" col-span-4 p-1 md:pl-3 md:pr-8 capitalize text-[#8C9096] text-[0.6rem] md:text-lg">
                   TOTAL DEPOSITS
                 </div>
 
                 <div>
                   <input
-                    className="bg-[#101218] focus:bg-none focus:outline-0 text-right pr-2"
+                    className="bg-[#101218] focus:bg-none focus:outline-0 md:text-right pr-2 text-[0.8rem]"
                     placeholder="0.00"
                   />
                 </div>
               </div>
 
-              <Button className="w-full text-[1.15rem] rounded-full px-2 py-6 bg-gradient-to-br from-[#BAC6EF] via-[#65ABE9] to-[#8BF2E8] text-black">
+              <Button className="w-full md:text-[1.15rem]  rounded-full py-3 md:px-2 md:py-6 bg-gradient-to-br from-[#BAC6EF] via-[#65ABE9] to-[#8BF2E8] text-black">
                 Withdraw
               </Button>
             </div>
           </TabsContent>
         </Tabs>
       </div>
-      <div className="flex-col flex bg-[#101217] rounded-2xl px-4 py-5 mb-5 justify-center items-center">
+      <div className="flex-col flex bg-[#101217] rounded-2xl px-4 py-5 mb-5 justify-center items-center ">
         <div className=" gap-8 flex justify-between w-[95%] items-center ">
           <div>
-            <div className="text-[1.3rem]">Liquidation range </div>
+            <div className=" md:text-[1.3rem]">Liquidation range </div>
           </div>
-          <div className="flex gap-8 text-sm">
-            <div>
+          <div className="flex gap-8 text-sm ">
+            <div className="hidden md:block">
               <div>CURRENT BALANCE (EST) / DEPOSITED </div>
               <div className="text-right">
                 <span>3.51835</span> <span>/</span> <span>3.51835 </span>
               </div>
             </div>
-            <div>
+            <div className="hidden md:block">
               <div>LOSS AMOUNT</div>
               <div className="text-right">0</div>
             </div>
-            <div>
+            <div className="hidden md:block">
               <div>%LOSS</div>
               <div className="text-right">0</div>
             </div>
@@ -263,7 +279,7 @@ const Stake = () => {
             Oracle
           </div>
           {/* portion */}
-          <div className="absolute w-24 h-8 bottom-[0.1rem] left-[47%] bg-gray-50"></div>
+          <div className="absolute w-6 h-2 md:w-24 md:h-8  bottom-[0.1rem] left-[47%] bg-gray-50"></div>
         </div>
 
         <div className="flex justify-between text-sm w-[95%] ">
@@ -283,7 +299,7 @@ const Stake = () => {
             <div className="h-[1rem] w-[0.1rem] bg-gray-100 "></div>
           </div>
         </div>
-        <div className="flex justify-between text-sm w-[98.5%] mt-2 ">
+        <div className="flex justify-between text-[0.4rem] md:text-sm w-[98.5%] mt-2  ">
           <div className="flex-cols">
             <div>USD $0</div>
           </div>

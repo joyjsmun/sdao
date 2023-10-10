@@ -21,9 +21,9 @@ const Hero = () => {
               href="/stake"
               className="px-1 inline-block py-1 w-full sm:w-fit rounded-full bg-gradient-to-br from-primary-500 to-secondary-500 hover:bg-slate-800 text-white mt-3"
             >
-              <span className="block text-[1.15rem] bg-gradient-to-br from-[#BAC6EF] via-[#65ABE9] to-[#8BF2E8] text-black rounded-full px-44 py-3 lg:text-lg">
+              <button className="  bg-gradient-to-br from-[#BAC6EF] via-[#65ABE9] to-[#8BF2E8] text-black rounded-full  py-3 px-20 text-center  lg:px-44 lg:py-3  text-lg lg:text-lg ">
                 Stake{" "}
-              </span>
+              </button>
             </Link>
           </div>
         </div>

@@ -14,7 +14,7 @@ export const Header = () => {
                 pathname: "/",
               }}
             >
-              <a className="gap-2 border text-2xl px-3 py-1  border-white rounded-3xl font-light bg-transparent ">
+              <a className="gap-2 border text-xl px-2 py-1 md:text-2xl  md:px-3 md:py-1  border-white rounded-3xl font-light bg-transparent ">
                 SupremeDAO
               </a>
             </Link>
