@@ -30,15 +30,17 @@ const Stake = () => {
       <div className="bg-[#101217]   grid-cols-2 grid md:grid-cols-4  md:rounded-2xl px-4 py-5 gap-3 ">
         <div className="bg-gradient-to-r from-[#337ec2] via-[#1d4a55] to-[#477655] p-[0.025rem] rounded-2xl ">
           <div className="bg-black rounded-2xl  md:py-4 md:px-14 text-xl ">
-            <div className="capitalize  text-s-gray  md:font-thin text-[0.8rem] md:text-lg mb-2 px-1">
-              ANNUAL PERCENTAGE RATE
-              <span
-                className=""
+            <div className="flex  items-center">
+              <div className="capitalize  text-s-gray  md:font-thin text-[0.8rem] md:text-lg  px-1">
+                ANNUAL PERCENTAGE RATE
+              </div>
+              <div
+                className="bg-cover bg-no-repeat bg-center w-4 h-4 block md:ml-2"
                 style={{
-                  backgroundImage: `url('images/info.png')`,
-                  height: "fill",
+                  backgroundImage: `url('images/information.png')`,
+                  backgroundPosition: "center",
                 }}
-              ></span>
+              ></div>
             </div>
             <div className="text-s-aqua text-[0.8rem] px-2  md:text-lg ">
               85%
@@ -47,100 +49,114 @@ const Stake = () => {
         </div>
         <div className="bg-gradient-to-r from-[#337ec2] via-[#1d4a55] to-[#477655] p-[0.025rem] rounded-2xl ">
           <div className="bg-black rounded-2xl  md:py-4 md:px-14 text-xl ">
-            <div className="capitalize  text-s-gray   md:font-thin text-[0.8rem] md:text-lg mb-2 px-1">
-              TOTAL VALUE LOCKED
-              <span
-                className=""
+            <div className="flex items-center">
+              <div className="capitalize  text-s-gray   md:font-thin text-[0.8rem] md:text-lg px-1">
+                TOTAL VALUE LOCKED
+              </div>
+              <div
+                className="bg-cover bg-no-repeat bg-center w-4 h-4 block md:ml-2"
                 style={{
-                  backgroundImage: `url('images/info.png')`,
-                  height: "fill",
+                  backgroundImage: `url('images/information.png')`,
+                  backgroundPosition: "center",
                 }}
-              ></span>
+              ></div>
             </div>
             <div className=" text-[0.8rem] px-2  md:text-lg ">$7,923,693</div>
           </div>
         </div>
         <div className="bg-black rounded-2xl  md:py-4 md:px-14 text-xl ">
-          <div className="capitalize  text-s-gray md:text-s-gray  md:font-thin text-[0.8rem] md:text-lg mb-2 px-1">
-            wstETH
-            <span
-              className=""
+          <div className="flex  items-center">
+            <div className="capitalize  text-s-gray  md:font-thin text-[0.8rem] md:text-lg  px-1">
+              wstETH
+            </div>
+            <div
+              className="bg-cover bg-no-repeat bg-center w-4 h-4 block md:ml-2"
               style={{
-                backgroundImage: `url('images/info.png')`,
-                height: "fill",
+                backgroundImage: `url('images/information.png')`,
+                backgroundPosition: "center",
               }}
-            ></span>
+            ></div>
           </div>
           <div className=" text-[0.8rem] px-2  md:text-lg ">$35,0000</div>
         </div>
         <div className="bg-black rounded-2xl  md:py-4 md:px-14 text-xl ">
-          <div className="capitalize  text-s-gray md:text-s-gray  md:font-thin text-[0.8rem] md:text-lg mb-2 px-1">
-            TOTAL DEBT
-            <span
-              className=""
+          <div className="flex  items-center">
+            <div className="capitalize  text-s-gray  md:font-thin text-[0.8rem] md:text-lg  px-1">
+              TOTAL DEBT
+            </div>
+            <div
+              className="bg-cover bg-no-repeat bg-center w-4 h-4 block md:ml-2"
               style={{
-                backgroundImage: `url('images/info.png')`,
-                height: "fill",
+                backgroundImage: `url('images/information.png')`,
+                backgroundPosition: "center",
               }}
-            ></span>
+            ></div>
           </div>
           <div className=" text-[0.8rem] px-2  md:text-lg ">$748,415,330</div>
         </div>
       </div>
       <div className="bg-[#101217]  grid-cols-3 grid md:grid-cols-4  lg:grid-cols-4  justify-between md:rounded-2xl px-2 md:px-4 py-5 gap-2 md:gap-3 ">
         <div className="bg-black rounded-2xl  md:py-4 md:px-14 text-xl ">
-          <div className="capitalize  text-s-gray md:text-s-gray  md:font-thin text-[0.8rem] md:text-lg mb-2 px-1">
-            Status
-            <span
-              className=""
+          <div className="flex  items-center">
+            <div className="capitalize  text-s-gray  md:font-thin text-[0.8rem] md:text-lg  px-1">
+              STATUS
+            </div>
+            <div
+              className="bg-cover bg-no-repeat bg-center w-4 h-4 block md:ml-2"
               style={{
-                backgroundImage: `url('images/info.png')`,
-                height: "fill",
+                backgroundImage: `url('images/information.png')`,
+                backgroundPosition: "center",
               }}
-            ></span>
+            ></div>
           </div>
           <div className=" text-s-aqua text-[0.8rem] px-2  md:text-lg ">
             Healthy
           </div>
         </div>
         <div className="bg-black rounded-2xl  md:py-4 md:px-14 text-xl ">
-          <div className="capitalize  text-s-gray md:text-s-gray  md:font-thin text-[0.8rem] md:text-lg mb-2 px-1">
-            Health
-            <span
-              className=""
+          <div className="flex  items-center">
+            <div className="capitalize  text-s-gray  md:font-thin text-[0.8rem] md:text-lg  px-1">
+              HEALTH
+            </div>
+            <div
+              className="bg-cover bg-no-repeat bg-center w-4 h-4 block md:ml-2"
               style={{
-                backgroundImage: `url('images/info.png')`,
-                height: "fill",
+                backgroundImage: `url('images/information.png')`,
+                backgroundPosition: "center",
               }}
-            ></span>
+            ></div>
           </div>
           <div className="text-s-aqua text-[0.8rem] px-2  md:text-lg ">
             0.00%
           </div>
         </div>
         <div className="hidden md:block bg-black  rounded-2xl  py-4 px-14 text-xl ">
-          <div className="capitalize  text-s-gray font-light mb-2 hidden md:block">
-            Liqudation Range
-            <span
-              className=""
+          <div className="flex  items-center">
+            <div className="capitalize  text-s-gray font-light mb-2 hidden md:block">
+              LIQUDATION RANGE
+            </div>
+            <div
+              className="bg-cover bg-no-repeat bg-center w-4 h-4 block md:ml-2"
               style={{
-                backgroundImage: `url('images/info.png')`,
-                height: "fill",
+                backgroundImage: `url('images/information.png')`,
+                backgroundPosition: "center",
               }}
-            ></span>
+            ></div>
           </div>
           <div className="text-sm hidden md:block">0.00 - 0.00</div>
         </div>
         <div className="bg-black rounded-2xl  md:py-4 md:px-14 text-xl ">
-          <div className="capitalize  text-s-gray md:text-s-gray  md:font-thin text-[0.8rem] md:text-lg mb-2 px-1">
-            Borrow Rate
-            <span
-              className=""
+          <div className="flex  items-center">
+            <div className="capitalize  text-s-gray  md:font-thin text-[0.8rem] md:text-lg  px-1">
+              BORROW RATE
+            </div>
+            <div
+              className="bg-cover bg-no-repeat bg-center w-4 h-4 block md:ml-2"
               style={{
-                backgroundImage: `url('images/info.png')`,
-                height: "fill",
+                backgroundImage: `url('images/information.png')`,
+                backgroundPosition: "center",
               }}
-            ></span>
+            ></div>
           </div>
           <div className="text-[0.8rem] px-2  md:text-lg">0.00%</div>
         </div>
