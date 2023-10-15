@@ -25,7 +25,7 @@ const Layout: React.FC<LayoutProps> = ({ children, title }) => {
 
   return (
     <div
-      className="flex-col items-center m-8 p-1  border-[#252525]  border rounded-3xl overflow-hidden"
+      className="flex-col items-center md:m-8 md:p-1  border-[#252525]  md:border md:rounded-3xl overflow-hidden"
       style={styleBg}
     >
       <Head>
