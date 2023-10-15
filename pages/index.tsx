@@ -6,7 +6,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   return (
-    <div className=" w-100vw h-[82.5vh]">
+    <div className=" w-100vw h-[100vh] md:h-[82.5vh]">
       <Hero />
     </div>
   );
