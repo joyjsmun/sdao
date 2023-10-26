@@ -1,5 +1,5 @@
 import { useContractRead } from "wagmi";
-import crvUsdControllerAbis from "../app/abis/crvUSD_Controller.json";
+import crvUsdControllerAbis from "../app/abis/curvUSD_Controller.json";
 
 export default function Test() {
   const { data, isError, isLoading } = useContractRead({
@@ -10,5 +10,9 @@ export default function Test() {
 
   console.log("TotalDebt: ", data);
   console.log("alchemy:", process.env.ALCHEMY_ID);
-  return <div>{JSON.stringify(data)}</div>;
+
+  // Convert the BigInt to a string before rendering it in the component.
+  const dataString = data ? data.toString() : "";
+
+  return <div>{dataString}</div>;
 }
