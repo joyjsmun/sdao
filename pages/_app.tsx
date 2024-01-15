@@ -19,7 +19,7 @@ export const { chains, publicClient } = configureChains(
   [
     jsonRpcProvider({
       rpc: () => ({
-        http: "https://rpc.tenderly.co/fork/c67f0d5c-e1c9-4ad7-af42-f4117a43d317",
+        http: "https://rpc.tenderly.co/fork/df65104f-0339-47c4-b4fb-4d91cda2d570",
       }),
     }),
     // alchemyProvider({ apiKey: process.env.ALCHEMY_ID as string }),

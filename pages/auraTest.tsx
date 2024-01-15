@@ -7,6 +7,7 @@ const axios = require("axios");
 // Define the GraphQL endpoint
 const ENDPOINT = "https://data.aura.finance/graphql";
 
+
 // Define the GraphQL query and variables
 const QUERY = `
 query PoolApr($poolId: String!, $chainId: Int, $range: DateRangeIntervalInput!) {
