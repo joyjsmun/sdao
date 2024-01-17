@@ -1,5 +1,5 @@
 import { useContractRead } from "wagmi";
-import leverageStrategyAbi from "../app/abis/LeverageStrategy.json";
+import leverageStrategyAbi from "../app/abis/leverageStrategy.json";
 
 export default function Test() {
   const usdcAmount = useContractRead({
