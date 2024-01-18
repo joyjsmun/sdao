@@ -1,7 +1,7 @@
 import React, { CSSProperties } from "react";
 import Head from "next/head";
 
-import { Providers } from "../pages/providers";
+import Providers from "../pages/providers";
 import "@rainbow-me/rainbowkit/styles.css";
 
 import Header from "./Header";

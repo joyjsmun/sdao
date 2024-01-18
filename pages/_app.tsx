@@ -10,8 +10,8 @@ import {
 } from "@rainbow-me/rainbowkit";
 import { configureChains, createConfig, WagmiConfig } from "wagmi";
 import { mainnet, polygon, optimism, arbitrum, base, zora } from "wagmi/chains";
-import { alchemyProvider } from "wagmi/providers/alchemy";
-import { publicProvider } from "wagmi/providers/public";
+// import { alchemyProvider } from "wagmi/providers/alchemy";
+// import { publicProvider } from "wagmi/providers/public";
 import { jsonRpcProvider } from "wagmi/providers/jsonRpc";
 
 export const { chains, publicClient } = configureChains(
