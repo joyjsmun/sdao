@@ -3,6 +3,8 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useContractRead } from "wagmi";
+import leverageStrategyAbi from "../app/abis/leverageStrategy.json";
 
 const Stake = () => {
   const [progress, setProgress] = React.useState(13);
@@ -15,6 +17,52 @@ const Stake = () => {
     //   fetch("dsada").then((res) => setProgress(res));
     return () => clearTimeout(timer);
   }, []);
+
+  const usdcAmount = useContractRead({
+    address: "0x91Ce6fEC501fc5e2dA8Ed6cB85603906ea4cd21F",
+    abi: leverageStrategyAbi,
+    functionName: "totalUsdcAmount",
+  });
+
+  const wsthethDeposited = useContractRead({
+    address: "0x91Ce6fEC501fc5e2dA8Ed6cB85603906ea4cd21F",
+    abi: leverageStrategyAbi,
+    functionName: "totalWsthethDeposited",
+  });
+
+  const crvUSDBorrowed = useContractRead({
+    address: "0x91Ce6fEC501fc5e2dA8Ed6cB85603906ea4cd21F",
+    abi: leverageStrategyAbi,
+    functionName: "crvUSDBorrowed",
+  });
+
+  console.log("totalUsdcAmount", usdcAmount.data);
+  console.log("totalWsthethDeposited", wsthethDeposited.data);
+  console.log("crvUSDBorrowed", crvUSDBorrowed.data);
+
+  // Modify the data as needed before rendering or storing it.
+  const modifiedUsdcAmount: number = usdcAmount.data
+    ? Number(usdcAmount.data) * 2
+    : 0;
+
+  const modifiedWstheth: number = wsthethDeposited.data
+    ? Number(wsthethDeposited.data) * 2
+    : 0;
+
+  const modifiedCrvUSDBorrowed: number = crvUSDBorrowed.data
+    ? Number(crvUSDBorrowed.data) * 2
+    : 0;
+
+  // Continue with the same approach for other variables...
+
+  console.log("totalUsdcAmount", modifiedUsdcAmount);
+  console.log("wsthethDeposited", modifiedWstheth);
+  console.log("crvUSDBorrowed", modifiedCrvUSDBorrowed);
+
+  // Convert the modified data to a string before rendering it in the component.
+  const usdcAmountString = modifiedUsdcAmount.toString();
+  const wsthethDepositedString = modifiedWstheth.toString();
+  const crvUSDBorrowedString = modifiedCrvUSDBorrowed.toString();
 
   return (
     <div className=" md:px-5 flex flex-col md:gap-4">
@@ -64,7 +112,9 @@ const Stake = () => {
                 }}
               ></div>
             </div>
-            <div className=" text-[0.7rem] px-2  md:text-lg ">$7,923,693</div>
+            <div className=" text-[0.7rem] px-2  md:text-lg ">
+              ${usdcAmountString}
+            </div>
           </div>
         </div>
         <div className="bg-black rounded-2xl  md:py-4 md:px-14 text-xl pl-3 ">
@@ -80,7 +130,9 @@ const Stake = () => {
               }}
             ></div>
           </div>
-          <div className=" text-[0.7rem] px-2  md:text-lg ">$35,0000</div>
+          <div className=" text-[0.7rem] px-2  md:text-lg ">
+            ${wsthethDepositedString}
+          </div>
         </div>
         <div className="bg-black rounded-2xl  md:py-4 md:px-14 text-xl pl-3 ">
           <div className="flex  items-center">
@@ -95,7 +147,9 @@ const Stake = () => {
               }}
             ></div>
           </div>
-          <div className=" text-[0.7rem] px-2  md:text-lg ">$748,415,330</div>
+          <div className=" text-[0.7rem] px-2  md:text-lg ">
+            ${crvUSDBorrowedString}
+          </div>
         </div>
       </div>
       <div className="bg-[#101217]  grid-cols-3 grid md:grid-cols-4  lg:grid-cols-4  justify-between md:rounded-2xl px-2 md:px-4 py-5 gap-2 md:gap-3 ">
