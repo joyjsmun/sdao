@@ -5,6 +5,7 @@ import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useContractRead } from "wagmi";
 import leverageStrategyAbi from "../app/abis/leverageStrategy.json";
+import crvUsdControllerAbis from "../app/abis/curvUSD_Controller.json";
 
 const Stake = () => {
   const [progress, setProgress] = React.useState(13);
@@ -17,6 +18,10 @@ const Stake = () => {
     //   fetch("dsada").then((res) => setProgress(res));
     return () => clearTimeout(timer);
   }, []);
+
+  const [inputValue, setInputValue] = React.useState(
+    "0x96be3d4B507b11831Bb5d3B8aD5e612262AcCaB6"
+  );
 
   const usdcAmount = useContractRead({
     address: "0x91Ce6fEC501fc5e2dA8Ed6cB85603906ea4cd21F",
@@ -36,6 +41,13 @@ const Stake = () => {
     functionName: "crvUSDBorrowed",
   });
 
+  const liquidationRange = useContractRead({
+    address: "0x100dAa78fC509Db39Ef7D04DE0c1ABD299f4C6CE",
+    abi: crvUsdControllerAbis,
+    functionName: "user_prices",
+    args: [inputValue],
+  });
+
   console.log("totalUsdcAmount", usdcAmount.data);
   console.log("totalWsthethDeposited", wsthethDeposited.data);
   console.log("crvUSDBorrowed", crvUSDBorrowed.data);
@@ -53,7 +65,11 @@ const Stake = () => {
     ? Number(crvUSDBorrowed.data) * 2
     : 0;
 
-  // Continue with the same approach for other variables...
+  const modifiedLiquidationRange = (liquidationRange.data as bigint[])
+    ? (liquidationRange.data as bigint[]).map((element) =>
+        parseFloat((Number(element) / 10 ** 18).toFixed(1))
+      )
+    : [];
 
   console.log("totalUsdcAmount", modifiedUsdcAmount);
   console.log("wsthethDeposited", modifiedWstheth);
@@ -200,7 +216,10 @@ const Stake = () => {
               }}
             ></div>
           </div>
-          <div className="text-sm hidden md:block">0.00 - 0.00</div>
+          <div className="text-sm hidden md:block">
+            {" "}
+            {modifiedLiquidationRange[0]} - {modifiedLiquidationRange[1]}
+          </div>
         </div>
         <div className="bg-black rounded-2xl  md:py-4 md:px-14 text-xl pl-3 ">
           <div className="flex  items-center">
