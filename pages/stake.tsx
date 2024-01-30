@@ -11,6 +11,25 @@ const Stake = () => {
   const [progress, setProgress] = React.useState(13);
   //   const [progress, setProgress] = React.useState(13);
 
+  // Array of states to track mouse hover for each icon
+  const [hoveredStates, setHoveredStates] = React.useState([
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+  ]);
+
+  // Function to update hovered state for a specific icon
+  const handleHover = (index: number, isHovered: boolean) => {
+    const newHoveredStates = [...hoveredStates];
+    newHoveredStates[index] = isHovered;
+    setHoveredStates(newHoveredStates);
+  };
+
   React.useEffect(() => {
     const timer = setTimeout(() => setProgress(66), 500);
 
@@ -95,19 +114,29 @@ const Stake = () => {
         <div className="bg-gradient-to-r from-[#337ec2] via-[#1d4a55] to-[#477655] p-[0.025rem] rounded-2xl ">
           <div className="bg-black rounded-2xl   md:py-4 md:px-14 text-xl pl-3 ">
             <div className="flex items-center">
-              <div className=" hidden md:block text-s-gray  font-light text-[0.7rem] md:text-lg  px-1  ">
-                ANNUAL PERCENT RATE
-              </div>
-              <div className=" block md:hidden text-s-gray  font-light text-[0.7rem] md:text-lg  px-1  ">
-                ANNUAL % RATE
-              </div>
+              {/* ANNUAL PERCENT RATE */}
               <div
-                className="bg-cover bg-no-repeat bg-center w-3 h-3 md:w-4 md:h-4 block md:ml-2"
-                style={{
-                  backgroundImage: `url('images/information.png')`,
-                  backgroundPosition: "center",
-                }}
-              ></div>
+                className="flex items-center relative"
+                onMouseEnter={() => handleHover(0, true)}
+                onMouseLeave={() => handleHover(0, false)}
+              >
+                <div className="hidden md:block text-s-gray font-light text-[0.7rem] md:text-lg px-1">
+                  ANNUAL PERCENT RATE
+                </div>
+                <div
+                  className="bg-cover bg-no-repeat bg-center w-3 h-3 md:w-4 md:h-4 block md:ml-2"
+                  style={{
+                    backgroundImage: `url('images/information.png')`,
+                    backgroundPosition: "center",
+                  }}
+                ></div>
+                {/* Description box */}
+                {hoveredStates[0] && (
+                  <div className="absolute top-0 left-20 bg-gray-800 text-white text-sm p-2 rounded opacity-70">
+                    This is the Annual Percent Rate information.
+                  </div>
+                )}
+              </div>
             </div>
             <div className="text-s-aqua text-[0.7rem] px-2  md:text-lg ">
               85%
@@ -117,16 +146,30 @@ const Stake = () => {
         <div className="bg-gradient-to-r from-[#337ec2] via-[#1d4a55] to-[#477655] p-[0.025rem] rounded-2xl ">
           <div className="bg-black rounded-2xl  md:py-4 md:px-14 text-xl pl-3 ">
             <div className="flex items-center">
-              <div className="  text-s-gray   font-light text-[0.7rem] md:text-lg px-1">
-                TOTAL VALUE LOCKED
-              </div>
+              {/* TOTAL VALUE LOCKED */}
               <div
-                className="bg-cover bg-no-repeat bg-center w-3 h-3 md:w-4 md:h-4 block md:ml-2"
-                style={{
-                  backgroundImage: `url('images/information.png')`,
-                  backgroundPosition: "center",
-                }}
-              ></div>
+                className="flex items-center relative"
+                onMouseEnter={() => handleHover(1, true)}
+                onMouseLeave={() => handleHover(1, false)}
+              >
+                {" "}
+                <div className="hidden md:block text-s-gray font-light text-[0.7rem] md:text-lg px-1">
+                  TOTAL VALUE LOCKED
+                </div>
+                <div
+                  className="bg-cover bg-no-repeat bg-center w-3 h-3 md:w-4 md:h-4 block md:ml-2"
+                  style={{
+                    backgroundImage: `url('images/information.png')`,
+                    backgroundPosition: "center",
+                  }}
+                ></div>
+                {/* Description box */}
+                {hoveredStates[1] && (
+                  <div className="absolute top-0 left-20 bg-gray-800 text-white text-sm p-2 rounded opacity-70">
+                    This is the TOTAL VALUE LOCKED information.
+                  </div>
+                )}
+              </div>
             </div>
             <div className=" text-[0.7rem] px-2  md:text-lg ">
               ${usdcAmountString}
@@ -135,16 +178,29 @@ const Stake = () => {
         </div>
         <div className="bg-black rounded-2xl  md:py-4 md:px-14 text-xl pl-3 ">
           <div className="flex  items-center">
-            <div className="  text-s-gray  font-light text-[0.7rem] md:text-lg  px-1">
-              wstETH
-            </div>
+            {/* wstETH */}
             <div
-              className="bg-cover bg-no-repeat bg-center w-3 h-3 md:w-4 md:h-4 block md:ml-2"
-              style={{
-                backgroundImage: `url('images/information.png')`,
-                backgroundPosition: "center",
-              }}
-            ></div>
+              className="flex items-center relative"
+              onMouseEnter={() => handleHover(2, true)}
+              onMouseLeave={() => handleHover(2, false)}
+            >
+              <div className="hidden md:block text-s-gray font-light text-[0.7rem] md:text-lg px-1">
+                wstETH
+              </div>
+              <div
+                className="bg-cover bg-no-repeat bg-center w-3 h-3 md:w-4 md:h-4 block md:ml-2"
+                style={{
+                  backgroundImage: `url('images/information.png')`,
+                  backgroundPosition: "center",
+                }}
+              ></div>
+              {/* Description box */}
+              {hoveredStates[2] && (
+                <div className="absolute top-0 left-20 bg-gray-800 text-white text-sm p-2 rounded opacity-70">
+                  This is the wstETH information.
+                </div>
+              )}
+            </div>
           </div>
           <div className=" text-[0.7rem] px-2  md:text-lg ">
             ${wsthethDepositedString}
@@ -152,16 +208,30 @@ const Stake = () => {
         </div>
         <div className="bg-black rounded-2xl  md:py-4 md:px-14 text-xl pl-3 ">
           <div className="flex  items-center">
-            <div className="  text-s-gray  font-light text-[0.7rem] md:text-lg  px-1">
-              TOTAL DEBT
-            </div>
+            {/* TOTAL DEBT */}
             <div
-              className="bg-cover bg-no-repeat bg-center w-3 h-3 md:w-4 md:h-4 block md:ml-2"
-              style={{
-                backgroundImage: `url('images/information.png')`,
-                backgroundPosition: "center",
-              }}
-            ></div>
+              className="flex items-center relative"
+              onMouseEnter={() => handleHover(3, true)}
+              onMouseLeave={() => handleHover(3, false)}
+            >
+              {" "}
+              <div className="hidden md:block text-s-gray font-light text-[0.7rem] md:text-lg px-1">
+                TOTAL DEBT
+              </div>
+              <div
+                className="bg-cover bg-no-repeat bg-center w-3 h-3 md:w-4 md:h-4 block md:ml-2"
+                style={{
+                  backgroundImage: `url('images/information.png')`,
+                  backgroundPosition: "center",
+                }}
+              ></div>
+              {/* Description box */}
+              {hoveredStates[3] && (
+                <div className="absolute top-0 left-20 bg-gray-800 text-white text-sm p-2 rounded opacity-70">
+                  This is the TOTAL DEBT information.
+                </div>
+              )}
+            </div>
           </div>
           <div className=" text-[0.7rem] px-2  md:text-lg ">
             ${crvUSDBorrowedString}
@@ -171,16 +241,30 @@ const Stake = () => {
       <div className="bg-[#101217]  grid-cols-3 grid md:grid-cols-4  lg:grid-cols-4  justify-between md:rounded-2xl px-2 md:px-4 py-5 gap-2 md:gap-3 ">
         <div className="bg-black rounded-2xl  md:py-4 md:px-14 text-xl pl-3 ">
           <div className="flex  items-center">
-            <div className="  text-s-gray  font-light text-[0.7rem] md:text-lg  px-1">
-              STATUS
-            </div>
+            {/* STATUS */}
             <div
-              className="bg-cover bg-no-repeat bg-center w-3 h-3 md:w-4 md:h-4 block md:ml-2"
-              style={{
-                backgroundImage: `url('images/information.png')`,
-                backgroundPosition: "center",
-              }}
-            ></div>
+              className="flex items-center relative"
+              onMouseEnter={() => handleHover(4, true)}
+              onMouseLeave={() => handleHover(4, false)}
+            >
+              {" "}
+              <div className="hidden md:block text-s-gray font-light text-[0.7rem] md:text-lg px-1">
+                STATUS
+              </div>
+              <div
+                className="bg-cover bg-no-repeat bg-center w-3 h-3 md:w-4 md:h-4 block md:ml-2"
+                style={{
+                  backgroundImage: `url('images/information.png')`,
+                  backgroundPosition: "center",
+                }}
+              ></div>
+              {/* Description box */}
+              {hoveredStates[4] && (
+                <div className="absolute top-0 left-20 bg-gray-800 text-white text-sm p-2 rounded opacity-70">
+                  This is the STATUS information.
+                </div>
+              )}
+            </div>
           </div>
           <div className=" text-s-aqua text-[0.7rem] px-2  md:text-lg ">
             Healthy
@@ -188,16 +272,30 @@ const Stake = () => {
         </div>
         <div className="bg-black rounded-2xl  md:py-4 md:px-14 text-xl pl-3 ">
           <div className="flex  items-center">
-            <div className="  text-s-gray font-light  text-[0.7rem] md:text-lg  px-1">
-              HEALTH
-            </div>
+            {/* HEALTH */}
             <div
-              className="bg-cover bg-no-repeat bg-center w-3 h-3 md:w-4 md:h-4 block md:ml-2"
-              style={{
-                backgroundImage: `url('images/information.png')`,
-                backgroundPosition: "center",
-              }}
-            ></div>
+              className="flex items-center relative"
+              onMouseEnter={() => handleHover(5, true)}
+              onMouseLeave={() => handleHover(5, false)}
+            >
+              {" "}
+              <div className="hidden md:block text-s-gray font-light text-[0.7rem] md:text-lg px-1">
+                HEALTH
+              </div>
+              <div
+                className="bg-cover bg-no-repeat bg-center w-3 h-3 md:w-4 md:h-4 block md:ml-2"
+                style={{
+                  backgroundImage: `url('images/information.png')`,
+                  backgroundPosition: "center",
+                }}
+              ></div>
+              {/* Description box */}
+              {hoveredStates[5] && (
+                <div className="absolute top-0 left-20 bg-gray-800 text-white text-sm p-2 rounded opacity-70">
+                  This is the HEALTH information.
+                </div>
+              )}
+            </div>
           </div>
           <div className="text-s-aqua text-[0.7rem] px-2  md:text-lg ">
             0.00%
@@ -205,34 +303,62 @@ const Stake = () => {
         </div>
         <div className="hidden md:block bg-black  rounded-2xl  py-4 px-14 text-xl ">
           <div className="flex items-center">
-            <div className="  text-s-gray font-light hidden md:block">
-              LIQUDATION RANGE
-            </div>
+            {/* LIQUIDATION RANGE */}
             <div
-              className="bg-cover bg-no-repeat bg-center w-3 h-3 md:w-4 md:h-4 block md:ml-2"
-              style={{
-                backgroundImage: `url('images/information.png')`,
-                backgroundPosition: "center",
-              }}
-            ></div>
+              className="flex items-center relative"
+              onMouseEnter={() => handleHover(6, true)}
+              onMouseLeave={() => handleHover(6, false)}
+            >
+              {" "}
+              <div className="hidden md:block text-s-gray font-light text-[0.7rem] md:text-lg px-1">
+                LIQUIDATION RANGE
+              </div>
+              <div
+                className="bg-cover bg-no-repeat bg-center w-3 h-3 md:w-4 md:h-4 block md:ml-2"
+                style={{
+                  backgroundImage: `url('images/information.png')`,
+                  backgroundPosition: "center",
+                }}
+              ></div>
+              {/* Description box */}
+              {hoveredStates[6] && (
+                <div className="absolute top-0 left-20 bg-gray-800 text-white text-sm p-2 rounded opacity-70">
+                  This is the LIQUIDATION RANGE information.
+                </div>
+              )}
+            </div>
           </div>
           <div className="text-sm hidden md:block">
             {" "}
-            {modifiedLiquidationRange[0]} - {modifiedLiquidationRange[1]}
+            {modifiedLiquidationRange[1]} - {modifiedLiquidationRange[0]}
           </div>
         </div>
         <div className="bg-black rounded-2xl  md:py-4 md:px-14 text-xl pl-3 ">
           <div className="flex  items-center">
-            <div className="  text-s-gray  font-light text-[0.7rem] md:text-lg  px-1">
-              BORROW RATE
-            </div>
+            {/* BORROW RATE */}
             <div
-              className="bg-cover bg-no-repeat bg-center w-3 h-3 md:w-4 md:h-4 block md:ml-2"
-              style={{
-                backgroundImage: `url('images/information.png')`,
-                backgroundPosition: "center",
-              }}
-            ></div>
+              className="flex items-center relative"
+              onMouseEnter={() => handleHover(7, true)}
+              onMouseLeave={() => handleHover(7, false)}
+            >
+              {" "}
+              <div className="hidden md:block text-s-gray font-light text-[0.7rem] md:text-lg px-1">
+                BORROW RATE
+              </div>
+              <div
+                className="bg-cover bg-no-repeat bg-center w-3 h-3 md:w-4 md:h-4 block md:ml-2"
+                style={{
+                  backgroundImage: `url('images/information.png')`,
+                  backgroundPosition: "center",
+                }}
+              ></div>
+              {/* Description box */}
+              {hoveredStates[7] && (
+                <div className="absolute top-0 left-20 bg-gray-800 text-white text-sm p-2 rounded opacity-70">
+                  This is the BORROW RATE information.
+                </div>
+              )}
+            </div>
           </div>
           <div className="text-[0.7rem] px-2  md:text-lg">0.00%</div>
         </div>
@@ -435,16 +561,16 @@ const Stake = () => {
             <div>USD $0</div>
           </div>
           <div className="flex-cols">
-            <div>USD $500</div>
+            <div>USD $1000</div>
           </div>
           <div className="flex-cols">
-            <div>USD $900</div>
+            <div>USD $2000</div>
           </div>
           <div className="flex-cols">
-            <div>USD $1350</div>
+            <div>USD $3000</div>
           </div>
           <div className="flex-cols">
-            <div>USD $1750</div>
+            <div>USD $4000</div>
           </div>
         </div>
       </div>
