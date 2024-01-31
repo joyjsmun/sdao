@@ -102,22 +102,12 @@ const Stake = () => {
       )
     : [];
 
-  // Access modifiedLiquidationRange here
-  const liquidationRangeString = `${modifiedLiquidationRange[1]} - ${modifiedLiquidationRange[0]}`;
-
   // Function to calculate white box position
   const calculateWhiteBoxPosition = (value: any) => {
     const totalGraphSize = 4000; // Set the total size of the graph in USD
     const position = (value / totalGraphSize) * 100; // Calculate the percentage position
     return position;
   };
-
-  // Split the liquidation range string into min and max values
-  const [minRange, maxRange] = liquidationRangeString.split(" - ");
-
-  // Calculate positions based on the percentage of the total graph size
-  const minRangePosition = calculateWhiteBoxPosition(parseFloat(minRange));
-  const maxRangePosition = calculateWhiteBoxPosition(parseFloat(maxRange));
 
   console.log("totalUsdcAmount", modifiedUsdcAmount);
   console.log("wsthethDeposited", modifiedWstheth);

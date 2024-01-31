@@ -7,42 +7,34 @@ const axios = require("axios");
 // Define the GraphQL endpoint
 const ENDPOINT = "https://data.aura.finance/graphql";
 
-
 // Define the GraphQL query and variables
 const QUERY = `
-query PoolApr($poolId: String!, $chainId: Int, $range: DateRangeIntervalInput!) {
+query PoolApr($poolId: String!, $chainId: Int ) {
   pool(id: $poolId, chainId: $chainId) {
     aprs {
-      totalHistoric(range: $range) {
-        timestamp
-        total
-        breakdown
+      total
       }
     }
   }
-}
 `;
 
 const VARIABLES = {
-  poolId: "107",
+  // it supposed to 107
+  //poolId: "107",
+  poolId: "100",
   chainId: 1,
-  range: {
-    end: 1696984200, // timestamp
-    frequency: 0,
-    start: 1687221000, // timestamp
-  },
 };
 
 // Send the GraphQL query
 
-export default function AuraTest() {
-  const [datas, setDatas] = useState([]);
+export default function AuraAPR() {
+  const [data, setDatas] = useState();
   useEffect(() => {
     axios
       .post(ENDPOINT, { query: QUERY, variables: VARIABLES })
       .then((response: any) => {
         console.log(response);
-        const data = response.data.data.pool.aprs.totalHistoric;
+        const data = response.data.data.pool.aprs.total;
         setDatas(data);
       })
       .catch((error: string) => {
@@ -50,15 +42,5 @@ export default function AuraTest() {
       });
   }, []);
 
-  return (
-    <div>
-      {datas.map((data: any, index) => (
-        <div key={index}>
-          <div>TimeStamp:{data.timestamp}</div>
-          <div>Total:{data.total}</div>
-          <div>Aura:{data.breakdown.AURA}</div>
-        </div>
-      ))}
-    </div>
-  );
+  return <div>{data} %</div>;
 }
