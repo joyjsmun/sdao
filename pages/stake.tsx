@@ -72,13 +72,21 @@ const Stake = () => {
     address: "0x100dAa78fC509Db39Ef7D04DE0c1ABD299f4C6CE",
     abi: crvUsdControllerAbis,
     functionName: "health",
-    args: ["0x91Ce6fEC501fc5e2dA8Ed6cB85603906ea4cd21F"],
+    args: ["0x975793c7A6a077221aCa4E4FB9B7f9A46378463a"],
   });
 
-  // Conditionally display health information
-  const healthInfo = health.data ? `${health.data}%` : "Loading...";
+  //number / 1e18 / number / (10 * 10 ^ 18)
 
-  console.log("health", healthInfo);
+  let healthInfo;
+
+  if (typeof health.data === "number" || typeof health.data === "bigint") {
+    console.log(health.data);
+    healthInfo = Number(health.data) / (10 * 10 ** 16);
+    healthInfo = healthInfo.toFixed(1);
+    console.log("health", healthInfo);
+  } else {
+    console.error("health.data is not a number or bigint");
+  }
   console.log("totalUsdcAmount", usdcAmount.data);
   console.log("totalWsthethDeposited", wsthethDeposited.data);
   console.log("crvUSDBorrowed", crvUSDBorrowed.data);
