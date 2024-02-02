@@ -11,26 +11,6 @@ import APR from "./auraAPR";
 const Stake = () => {
   const [progress, setProgress] = React.useState(13);
   //   const [progress, setProgress] = React.useState(13);
-
-  // Array of states to track mouse hover for each icon
-  const [hoveredStates, setHoveredStates] = React.useState([
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-  ]);
-
-  // Function to update hovered state for a specific icon
-  const handleHover = (index: number, isHovered: boolean) => {
-    const newHoveredStates = [...hoveredStates];
-    newHoveredStates[index] = isHovered;
-    setHoveredStates(newHoveredStates);
-  };
-
   React.useEffect(() => {
     const timer = setTimeout(() => setProgress(66), 500);
 
@@ -68,17 +48,6 @@ const Stake = () => {
     args: [inputValue],
   });
 
-  const health = useContractRead({
-    address: "0x100dAa78fC509Db39Ef7D04DE0c1ABD299f4C6CE",
-    abi: crvUsdControllerAbis,
-    functionName: "health",
-    args: ["0x91Ce6fEC501fc5e2dA8Ed6cB85603906ea4cd21F"],
-  });
-
-  // Conditionally display health information
-  const healthInfo = health.data ? `${health.data}%` : "Loading...";
-
-  console.log("health", healthInfo);
   console.log("totalUsdcAmount", usdcAmount.data);
   console.log("totalWsthethDeposited", wsthethDeposited.data);
   console.log("crvUSDBorrowed", crvUSDBorrowed.data);
@@ -112,11 +81,6 @@ const Stake = () => {
   console.log("totalUsdcAmount", modifiedUsdcAmount);
   console.log("wsthethDeposited", modifiedWstheth);
   console.log("crvUSDBorrowed", modifiedCrvUSDBorrowed);
-
-  // Convert the modified data to a string before rendering it in the component.
-  const usdcAmountString = modifiedUsdcAmount.toString();
-  const wsthethDepositedString = modifiedWstheth.toString();
-  const crvUSDBorrowedString = modifiedCrvUSDBorrowed.toString();
 
   return (
     <div className=" md:px-5 flex flex-col md:gap-4">
@@ -189,17 +153,20 @@ const Stake = () => {
         {/* pattern */}
 
         {/* left: progress %  */}
-        <div className=" w-[95%] flex-col mt-5 md:mt-20 relative  ">
-          <Progress value={progress} className="w-[100%]" />
-          <div className="absolute  w-2 h-4 md:h-8 bg-white  bottom-0 right-[34%]"></div>
-          <div className="absolute text-[0.6rem] md:text-base  bottom-[-1.65rem] items-center right-[33%] ">
+        <div className=" w-[95%] flex-col mt-5 md:mt-20 ml-3 relative  ">
+          <Progress
+            value={Number(wsthethDeposited.data)}
+            className="w-[100%]"
+          />
+          <div className="absolute  w-2 h-4 md:h-8 bg-white  bottom-0 left-[Number(wsthethDeposited.data)]"></div>
+          <div className="absolute text-[0.6rem] md:text-base  bottom-[-2.1rem] items-center left-[Number(wsthethDeposited.data)] ml-[-1rem]">
             Oracle
           </div>
-          {/* portion */}
+          {/* liquidation range portion */}
           <div className="absolute w-6 h-2 md:w-24 md:h-8  bottom-[0.1rem] left-[47%] bg-gray-50"></div>
         </div>
 
-        <div className="flex justify-between text-sm w-[95%] ">
+        <div className="flex justify-between text-sm w-[95%] ml-3 ">
           <div className="flex-cols">
             <div className="h-[1rem] w-[0.1rem] bg-gray-100 "></div>
           </div>
@@ -216,7 +183,7 @@ const Stake = () => {
             <div className="h-[1rem] w-[0.1rem] bg-gray-100 "></div>
           </div>
         </div>
-        <div className="flex justify-between text-[0.4rem] md:text-sm w-[98.5%] mt-2  ">
+        <div className="flex justify-between text-[0.4rem] md:text-sm w-[98.5%] mt-[1.5rem] ">
           <div className="flex-cols">
             <div>USD $0</div>
           </div>

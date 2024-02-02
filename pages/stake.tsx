@@ -479,7 +479,7 @@ const Stake = () => {
 
               <div className="grid grid-cols-5 md:flex border border-[#1A1D23] w-full justify-between p-2 rounded-md mb-8">
                 <div className=" col-span-4 p-1 md:pl-3 md:pr-8  text-[#8C9096] text-[0.7rem] md:text-lg">
-                  TOTAL DEPOSITS
+                  SHARES
                 </div>
 
                 <div>
