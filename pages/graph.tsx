@@ -10,12 +10,8 @@ import APR from "./auraAPR";
 
 const Stake = () => {
   const [progress, setProgress] = React.useState(13);
-  //   const [progress, setProgress] = React.useState(13);
   React.useEffect(() => {
     const timer = setTimeout(() => setProgress(66), 500);
-
-    // fetch('dsada').then(res => setProgress(res));
-    //   fetch("dsada").then((res) => setProgress(res));
     return () => clearTimeout(timer);
   }, []);
 
@@ -48,11 +44,6 @@ const Stake = () => {
     args: [inputValue],
   });
 
-  console.log("totalUsdcAmount", usdcAmount.data);
-  console.log("totalWsthethDeposited", wsthethDeposited.data);
-  console.log("crvUSDBorrowed", crvUSDBorrowed.data);
-
-  // Modify the data as needed before rendering or storing it.
   const modifiedUsdcAmount: number = usdcAmount.data
     ? Number(usdcAmount.data) * 2
     : 0;
@@ -71,27 +62,24 @@ const Stake = () => {
       )
     : [];
 
-  // Function to calculate white box position
-  const calculateWhiteBoxPosition = (value: any) => {
-    const totalGraphSize = 4000; // Set the total size of the graph in USD
-    const position = (value / totalGraphSize) * 100; // Calculate the percentage position
-    return position;
+  const calculateYellowBoxPosition = (start: number, finish: number) => {
+    const totalGraphSize = 4000;
+    const startPosition = (start / totalGraphSize) * 100;
+    const finishPosition = (finish / totalGraphSize) * 100;
+    return { start: startPosition, finish: finishPosition };
   };
 
-  console.log("totalUsdcAmount", modifiedUsdcAmount);
-  console.log("wsthethDeposited", modifiedWstheth);
-  console.log("crvUSDBorrowed", modifiedCrvUSDBorrowed);
+  //liqudation Range Box on top of graph
+  const liqudationBoxPosition = calculateYellowBoxPosition(1173, 1297);
 
   return (
     <div className=" md:px-5 flex flex-col md:gap-4">
       <div className="flex-col flex bg-[#101217] md:rounded-2xl px-4 py-5 mb-5 justify-center  ">
-        {/* web */}
         <div className="hidden md:block md:pl-5 ">
           <div className=" gap-4 md:gap-8 flex justify-between w-[95%]  ">
             <div className="text-base  md:text-[1.3rem] mb-4">
               Liquidation range{" "}
             </div>
-
             <div className="flex gap-8 text-sm mb-4 md:mb-0">
               <div className="flex-col md:block mb-4">
                 <div className="text-s-gray">
@@ -101,7 +89,6 @@ const Stake = () => {
                   <span>3.51835</span> <span>/</span> <span>3.51835 </span>
                 </div>
               </div>
-
               <div className="block">
                 <div className="flex gap-4">
                   <div>
@@ -117,13 +104,11 @@ const Stake = () => {
             </div>
           </div>
         </div>
-        {/* mobile */}
         <div className="block md:hidden">
           <div className=" gap-4 md:gap-8 md:flex flex-col justify-between w-[95%]  ">
             <div className="text-base  md:text-[1.3rem] mb-4">
               Liquidation range{" "}
             </div>
-            {/* mobile - stake bottom side*/}
             <div className="flex-col  md:flex gap-8 text-sm mb-4 md:mb-0">
               <div className="flex-col md:block mb-4">
                 <div className="text-s-gray">
@@ -133,7 +118,6 @@ const Stake = () => {
                   <span>3.51835</span> <span>/</span> <span>3.51835 </span>
                 </div>
               </div>
-              {/* mobile - loss amount */}
               <div className="block">
                 <div className="flex gap-4">
                   <div>
@@ -149,23 +133,27 @@ const Stake = () => {
             </div>
           </div>
         </div>
-        {/* liqudation lange graph */}
-        {/* pattern */}
-
-        {/* left: progress %  */}
         <div className=" w-[95%] flex-col mt-5 md:mt-20 ml-3 relative  ">
           <Progress
             value={Number(wsthethDeposited.data)}
             className="w-[100%]"
           />
+          <div
+            className="absolute bg-gray-50 bottom-0"
+            style={{
+              left: `${liqudationBoxPosition.start}%`,
+              width: `${
+                liqudationBoxPosition.finish - liqudationBoxPosition.start
+              }%`,
+              height: "2rem",
+            }}
+          ></div>
           <div className="absolute  w-2 h-4 md:h-8 bg-white  bottom-0 left-[Number(wsthethDeposited.data)]"></div>
           <div className="absolute text-[0.6rem] md:text-base  bottom-[-2.1rem] items-center left-[Number(wsthethDeposited.data)] ml-[-1rem]">
             Oracle
           </div>
-          {/* liquidation range portion */}
-          <div className="absolute w-6 h-2 md:w-24 md:h-8  bottom-[0.1rem] left-[47%] bg-gray-50"></div>
+          {/* <div className="absolute w-6 h-2 md:w-24 md:h-8  bottom-[0.1rem] left-[47%] bg-gray-50"></div> */}
         </div>
-
         <div className="flex justify-between text-sm w-[95%] ml-3 ">
           <div className="flex-cols">
             <div className="h-[1rem] w-[0.1rem] bg-gray-100 "></div>

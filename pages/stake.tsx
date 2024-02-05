@@ -110,22 +110,15 @@ const Stake = () => {
       )
     : [];
 
-  // Access modifiedLiquidationRange here
-  const liquidationRangeString = `${modifiedLiquidationRange[1]} - ${modifiedLiquidationRange[0]}`;
-
-  // Function to calculate white box position
-  const calculateWhiteBoxPosition = (value: any) => {
-    const totalGraphSize = 4000; // Set the total size of the graph in USD
-    const position = (value / totalGraphSize) * 100; // Calculate the percentage position
-    return position;
+  const calculateYellowBoxPosition = (start: number, finish: number) => {
+    const totalGraphSize = 4000;
+    const startPosition = (start / totalGraphSize) * 100;
+    const finishPosition = (finish / totalGraphSize) * 100;
+    return { start: startPosition, finish: finishPosition };
   };
 
-  // Split the liquidation range string into min and max values
-  const [minRange, maxRange] = liquidationRangeString.split(" - ");
-
-  // Calculate positions based on the percentage of the total graph size
-  const minRangePosition = calculateWhiteBoxPosition(parseFloat(minRange));
-  const maxRangePosition = calculateWhiteBoxPosition(parseFloat(maxRange));
+  //liqudation Range Box on top of graph
+  const liqudationBoxPosition = calculateYellowBoxPosition(1173, 1297);
 
   console.log("totalUsdcAmount", modifiedUsdcAmount);
   console.log("wsthethDeposited", modifiedWstheth);
@@ -140,11 +133,13 @@ const Stake = () => {
     <div className=" md:px-5 flex flex-col md:gap-4">
       <div className="bg-[#101217] grid md:rounded-2xl px-8 py-4 ">
         <div className="flex flex-col text-2xl leading-7 md:gap-2 mb-3 ">
-          Strategy Description
+          ETH Leverage Yield Strategy Overview
         </div>
         <div className=" text-sm md:text-lg font-light md:font-medium leading-[1.375rem] text-s-gray">
-          Lorem ipsum dolor sit amet consectetur. Nibh phasellus gravida lectus
-          et sit suscipit. Quam nisl dis in orci ac adipiscing viverra amet.{" "}
+          This strategy is designed to maximize your Wrapped Staked Ether
+          (wstETH) holdings. Utilizing the synergy between crvUSD, Aura Finance,
+          and Paladin, this strategy offers a seamless method to enhance your
+          yields on staked ETH without the manual complexities.
         </div>
       </div>
       <div className="bg-[#101217]   grid-cols-2 grid md:grid-cols-4  md:rounded-2xl px-4 py-5 gap-3 ">
@@ -158,7 +153,7 @@ const Stake = () => {
                 onMouseLeave={() => handleHover(0, false)}
               >
                 <div className="hidden md:block text-s-gray font-light text-[0.7rem] md:text-lg px-1">
-                  ANNUAL PERCENT RATE
+                  ANNUAL PERCENT RATE (APR)
                 </div>
                 <div
                   className="bg-cover bg-no-repeat bg-center w-3 h-3 md:w-4 md:h-4 block md:ml-2"
@@ -170,7 +165,9 @@ const Stake = () => {
                 {/* Description box */}
                 {hoveredStates[0] && (
                   <div className="absolute top-0 left-20 bg-gray-800 text-white text-sm p-2 rounded opacity-70">
-                    This is the Annual Percent Rate information.
+                    This percentage reflects the annual rate of return on your
+                    investments, taking into account the effect of compounding
+                    over a year.
                   </div>
                 )}
               </div>
@@ -191,7 +188,7 @@ const Stake = () => {
               >
                 {" "}
                 <div className="hidden md:block text-s-gray font-light text-[0.7rem] md:text-lg px-1">
-                  TOTAL VALUE LOCKED
+                  TOTAL VALUE LOCKED (TVL)
                 </div>
                 <div
                   className="bg-cover bg-no-repeat bg-center w-3 h-3 md:w-4 md:h-4 block md:ml-2"
@@ -203,7 +200,9 @@ const Stake = () => {
                 {/* Description box */}
                 {hoveredStates[1] && (
                   <div className="absolute top-0 left-20 bg-gray-800 text-white text-sm p-2 rounded opacity-70">
-                    This is the TOTAL VALUE LOCKED information.
+                    Represents the aggregate amount of assets staked in our
+                    strategy, indicating the strategy&apos;s size and
+                    participation level.
                   </div>
                 )}
               </div>
@@ -234,7 +233,9 @@ const Stake = () => {
               {/* Description box */}
               {hoveredStates[2] && (
                 <div className="absolute top-0 left-20 bg-gray-800 text-white text-sm p-2 rounded opacity-70">
-                  This is the wstETH information.
+                  Stands for wrapped staked Ether. It&apos;s your staked ETH
+                  that has been wrapped to interact with different DeFi
+                  protocols and earn additional yields.
                 </div>
               )}
             </div>
@@ -265,7 +266,8 @@ const Stake = () => {
               {/* Description box */}
               {hoveredStates[3] && (
                 <div className="absolute top-0 left-20 bg-gray-800 text-white text-sm p-2 rounded opacity-70">
-                  This is the TOTAL DEBT information.
+                  The sum of all funds borrowed against the collateral in the
+                  strategy.
                 </div>
               )}
             </div>
@@ -298,7 +300,8 @@ const Stake = () => {
               {/* Description box */}
               {hoveredStates[4] && (
                 <div className="absolute top-0 left-20 bg-gray-800 text-white text-sm p-2 rounded opacity-70">
-                  This is the STATUS information.
+                  Shows the current operational status of the strategy, such
+                  healthy, soft liquidation or hard liquidation.
                 </div>
               )}
             </div>
@@ -328,8 +331,10 @@ const Stake = () => {
               ></div>
               {/* Description box */}
               {hoveredStates[5] && (
-                <div className="absolute top-0 left-20 bg-gray-800 text-white text-sm p-2 rounded opacity-70">
-                  This is the HEALTH information.
+                <div className="absolute top-0 w-full left-20 bg-gray-800 text-white text-sm p-2 rounded opacity-70">
+                  A measure of the safety margin of your position. High health
+                  suggests a low risk of liquidation, while low health indicates
+                  increased risk.
                 </div>
               )}
             </div>
@@ -360,7 +365,8 @@ const Stake = () => {
               {/* Description box */}
               {hoveredStates[6] && (
                 <div className="absolute top-0 left-20 bg-gray-800 text-white text-sm p-2 rounded opacity-70">
-                  This is the LIQUIDATION RANGE information.
+                  It shows the price range in which the soft liquidation starts
+                  and when it leads to a hard liquidation.
                 </div>
               )}
             </div>
@@ -391,13 +397,16 @@ const Stake = () => {
               ></div>
               {/* Description box */}
               {hoveredStates[7] && (
-                <div className="absolute top-0 left-20 bg-gray-800 text-white text-sm p-2 rounded opacity-70">
-                  This is the BORROW RATE information.
+                <div className="absolute top-0 left-20 w- bg-gray-800 text-white text-sm p-2 rounded opacity-70">
+                  The interest rate you&apos;re charged for borrowing assets
+                  within the strategy, typically expressed as an annual
+                  percentage. This rate is variable and can change based on
+                  market conditions.
                 </div>
               )}
             </div>
           </div>
-          <div className="text-[0.7rem] px-2  md:text-lg">0.00%</div>
+          <div className="text-[0.7rem] px-2  md:text-lg">10.10%</div>
         </div>
       </div>
       <div className=" grid grid-cols-5 rounded-2xl gap-4 ">
@@ -405,19 +414,31 @@ const Stake = () => {
           <div className="text-2xl mb-8">
             Increase your wstETH holdings by staking in high yield farms.
           </div>
-          <div className="text-s-gray mb-8 ">
-            Lorem ipsum dolor sit amet consectetur. Nibh phasellus gravida
-            lectus et sit suscipit. Quam nisl dis in orci ac adipiscing viverra
-            amet. Mi curabitur ornare rutrum bibendum commodo phasellus. Ut id
-            vel arcu at ut molestie. Erat fringilla enim at et non ut arcu
-            sagittis. Tortor arcu at elit ac scelerisque pulvinar.
+          <div className="text-s-gray mb-4 ">
+            Introducing SupremeDAO&apos;s ETH Leverage Yield Strategy – an
+            automated solution for enhancing your Ethereum investments.
           </div>
-          <div className="text-s-gray ">
-            Tempor blandit bibendum et libero imperdiet tincidunt nunc curabitur
-            odio. Pulvinar lacus ac convallis lacus eget. Facilisis sed semper
-            dui vel mauris hendrerit sit. Platea aliquet nunc amet tempor ipsum
-            malesuada. In dis venenatis eu bibendum eu faucibus aliquet
-            imperdiet sodales. Vulputate gravida a pellentesque neque.{" "}
+          <div className="text-s-gray mb-4  ">
+            By integrating with Aura Finance, crvUSD, and Paladin, this strategy
+            automates the complex process of yield generation. To leverage your
+            wrapped staked ETH (wstETH), our Power Agent creates a debt on Curve
+            in crvUSD, then stakes these funds in high-yield Aura Finance pools.
+            To mitigate risks, a portion of the generated yield is automatically
+            used to close the Collateralized Debt Position (CDP), with another
+            portion optimized for additional returns on Paladin. This approach
+            not only simplifies your investment process by eliminating the need
+            for manual token selling, position locking, or bribe round
+            participation but also aims to deliver a substantial yield on your
+            ETH.
+          </div>
+          <div className="text-s-gray mb-2 ">
+            Prior to engaging with SupremeDAO&apos;s strategy, thoroughly review
+            the documentation and terms and conditions provided. Keep in mind
+            that returns can fluctuate; we recommend using the user interface to
+            preview both deposits and withdrawals for current performance
+            estimates. By proceeding with your deposit, you acknowledge and
+            accept these terms and assert your understanding of the
+            strategy&apos;s mechanics and inherent market risks.
           </div>
         </div>
 
@@ -498,13 +519,11 @@ const Stake = () => {
         </Tabs>
       </div>
       <div className="flex-col flex bg-[#101217] md:rounded-2xl px-4 py-5 mb-5 justify-center  ">
-        {/* web */}
         <div className="hidden md:block md:pl-5 ">
           <div className=" gap-4 md:gap-8 flex justify-between w-[95%]  ">
             <div className="text-base  md:text-[1.3rem] mb-4">
               Liquidation range{" "}
             </div>
-
             <div className="flex gap-8 text-sm mb-4 md:mb-0">
               <div className="flex-col md:block mb-4">
                 <div className="text-s-gray">
@@ -514,7 +533,6 @@ const Stake = () => {
                   <span>3.51835</span> <span>/</span> <span>3.51835 </span>
                 </div>
               </div>
-
               <div className="block">
                 <div className="flex gap-4">
                   <div>
@@ -530,13 +548,11 @@ const Stake = () => {
             </div>
           </div>
         </div>
-        {/* mobile */}
         <div className="block md:hidden">
           <div className=" gap-4 md:gap-8 md:flex flex-col justify-between w-[95%]  ">
             <div className="text-base  md:text-[1.3rem] mb-4">
               Liquidation range{" "}
             </div>
-            {/* mobile - stake bottom side*/}
             <div className="flex-col  md:flex gap-8 text-sm mb-4 md:mb-0">
               <div className="flex-col md:block mb-4">
                 <div className="text-s-gray">
@@ -546,7 +562,6 @@ const Stake = () => {
                   <span>3.51835</span> <span>/</span> <span>3.51835 </span>
                 </div>
               </div>
-              {/* mobile - loss amount */}
               <div className="block">
                 <div className="flex gap-4">
                   <div>
@@ -562,21 +577,28 @@ const Stake = () => {
             </div>
           </div>
         </div>
-        {/* liqudation lange graph */}
-        {/* pattern */}
-
-        {/* left: progress %  */}
-        <div className=" w-[95%] flex-col mt-5 md:mt-20 relative  ">
-          <Progress value={progress} className="w-[100%]" />
-          <div className="absolute  w-2 h-4 md:h-8 bg-white  bottom-0 right-[34%]"></div>
-          <div className="absolute text-[0.6rem] md:text-base  bottom-[-1.65rem] items-center right-[33%] ">
+        <div className=" w-[95%] flex-col mt-5 md:mt-20 ml-3 relative  ">
+          <Progress
+            value={Number(wsthethDeposited.data)}
+            className="w-[100%]"
+          />
+          <div
+            className="absolute bg-gray-50 bottom-0"
+            style={{
+              left: `${liqudationBoxPosition.start}%`,
+              width: `${
+                liqudationBoxPosition.finish - liqudationBoxPosition.start
+              }%`,
+              height: "2rem",
+            }}
+          ></div>
+          <div className="absolute  w-2 h-4 md:h-8 bg-white  bottom-0 left-[Number(wsthethDeposited.data)]"></div>
+          <div className="absolute text-[0.6rem] md:text-base  bottom-[-2.1rem] items-center left-[Number(wsthethDeposited.data)] ml-[-1rem]">
             Oracle
           </div>
-          {/* portion */}
-          <div className="absolute w-6 h-2 md:w-24 md:h-8  bottom-[0.1rem] left-[47%] bg-gray-50"></div>
+          {/* <div className="absolute w-6 h-2 md:w-24 md:h-8  bottom-[0.1rem] left-[47%] bg-gray-50"></div> */}
         </div>
-
-        <div className="flex justify-between text-sm w-[95%] ">
+        <div className="flex justify-between text-sm w-[95%] ml-3 ">
           <div className="flex-cols">
             <div className="h-[1rem] w-[0.1rem] bg-gray-100 "></div>
           </div>
@@ -593,7 +615,7 @@ const Stake = () => {
             <div className="h-[1rem] w-[0.1rem] bg-gray-100 "></div>
           </div>
         </div>
-        <div className="flex justify-between text-[0.4rem] md:text-sm w-[98.5%] mt-2  ">
+        <div className="flex justify-between text-[0.4rem] md:text-sm w-[98.5%] mt-[1.5rem] ">
           <div className="flex-cols">
             <div>USD $0</div>
           </div>
