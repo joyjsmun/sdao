@@ -1,4 +1,4 @@
-import { useContractWrite } from "wagmi";
+import { useContractRead, useContractWrite } from "wagmi";
 import { useState } from "react";
 import wethABI from "../app/abis/weth.json";
 
@@ -10,15 +10,26 @@ export default function Test() {
 
   // Call useContractWrite hook to obtain the contract function
   const { write: approveFunction } = useContractWrite({
-    address: "0x7b79995e5f793A07Bc00c21412e50Ecae098E7f9",
+    address: "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
     abi: wethABI,
     functionName: "approve",
     args: ["0x91Ce6fEC501fc5e2dA8Ed6cB85603906ea4cd21F", 100000000],
   });
 
+  const allowanceAmount = useContractRead({
+    address: "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+    abi: wethABI,
+    functionName: "allowance",
+    args: [
+      "0x97d7a75Bec591698e7FAd02c2e89f6b1E79D343C",
+      "0x96be3d4B507b11831Bb5d3B8aD5e612262AcCaB6",
+    ],
+  });
+
   const handleApprove = async () => {
     setIsLoading(true);
     try {
+      console.log(allowanceAmount.data);
       // Call the contract function directly
       await approveFunction();
       console.log("Approval successful");

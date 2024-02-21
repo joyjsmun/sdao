@@ -15,11 +15,11 @@ import { mainnet, sepolia } from "wagmi/chains";
 import { jsonRpcProvider } from "wagmi/providers/jsonRpc";
 
 export const { chains, publicClient } = configureChains(
-  [sepolia],
+  [mainnet],
   [
     jsonRpcProvider({
       rpc: () => ({
-        http: "https://rpc.tenderly.co/fork/df65104f-0339-47c4-b4fb-4d91cda2d570",
+        http: "https://rpc.tenderly.co/fork/0930bb8d-c2e7-4f48-a0b8-946a1ca7294c",
       }),
     }),
     // alchemyProvider({ apiKey: process.env.ALCHEMY_ID as string }),
